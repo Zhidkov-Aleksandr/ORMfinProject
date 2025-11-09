@@ -13,9 +13,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,9 +21,11 @@ import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 
+@Builder
 @Entity
 @Table(name = "courses")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Course {
@@ -36,13 +36,15 @@ public class Course {
     @Column(nullable = false)
     private String title;
 
+    // Описание (может быть null)
+    @Column(columnDefinition = "text")
     private String description;
 
     private LocalDate startDate;   // дата начала курса (опционально)
     private Integer durationWeeks; // длительность курса в неделях (пример поля)
 
     // Преподаватель курса (многие ко одному с User)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id", nullable = false)
     private User teacher;
 
@@ -53,6 +55,7 @@ public class Course {
 
     // Модули курса (один ко многим)
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Module> modules = new ArrayList<>();
 
     // Записи студентов на курс (Enrollments)

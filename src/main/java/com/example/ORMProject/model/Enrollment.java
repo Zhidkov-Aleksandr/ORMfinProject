@@ -1,15 +1,14 @@
 package com.example.ORMProject.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "enrollments")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Enrollment {

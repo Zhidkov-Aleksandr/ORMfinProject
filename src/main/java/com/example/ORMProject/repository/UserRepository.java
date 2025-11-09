@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
     // Дополнительно: метод поиска по email (для входа в систему, например)
     Optional<User> findByEmail(String email);
+
 }

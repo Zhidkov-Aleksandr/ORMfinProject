@@ -8,16 +8,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 import java.util.HashSet;
 
 @Entity
 @Table(name = "tags")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Tag {

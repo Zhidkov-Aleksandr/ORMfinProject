@@ -23,6 +23,7 @@ public class DemoDataConfig {
                                       CourseRepository courseRepository,
                                       PasswordEncoder passwordEncoder) {
         return args -> {
+            // Пользователи
             if (userRepository.count() == 0) {
                 User admin = new User();
                 admin.setName("Админ");
@@ -46,9 +47,11 @@ public class DemoDataConfig {
                 userRepository.save(student);
             }
 
+            // Курс + модуль
             if (courseRepository.count() == 0) {
-                // создадим один курс c модулем (без категории для краткости)
-                User teacher = userRepository.findByEmail("teacher@example.com").orElseThrow();
+                User teacher = userRepository.findByEmail("teacher@example.com")
+                        .orElseThrow(() -> new IllegalStateException("Teacher user not found"));
+
                 Course c = new Course();
                 c.setTitle("Демо курс: Hibernate");
                 c.setDescription("Краткий курс для демонстрации UI и ленивой загрузки");
@@ -57,6 +60,8 @@ public class DemoDataConfig {
                 Module m = new Module();
                 m.setTitle("Введение в ORM");
                 m.setCourse(c);
+
+                // благодаря orphanRemoval/cascade модуль сохранится вместе с курсом
                 c.getModules().add(m);
 
                 courseRepository.save(c);

@@ -12,26 +12,26 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "modules")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Module {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Курс, к которому относится модуль
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "course_id", nullable = false)
+    // Связь с курсом
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @Column(nullable = false)

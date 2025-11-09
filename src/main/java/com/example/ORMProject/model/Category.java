@@ -8,16 +8,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "categories")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category {

@@ -12,9 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 import org.springframework.context.annotation.Profile;
 
 import java.util.ArrayList;
@@ -22,9 +20,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // автоинкремент для PostgreSQL
