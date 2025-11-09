@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/edu_db
+    username: edu_user
+    password: edu_pass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+    open-in-view: true   # ← ПО УМОЛЧАНИЮ ВКЛ. В DEV. !! ВЫКЛЮЧИТЬ ДЛЯ ДЕМО LazyInitializationException.
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.hibernate.SQL: debug

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${'Курс: ' + course.title}">Детали курса</title>
+    <style>
+        body { font-family: sans-serif; margin: 24px; }
+        .muted { color: #666; }
+        .chip { display: inline-block; padding: 4px 8px; border: 1px solid #aaa; border-radius: 12px; margin-right: 6px; }
+        a.button { text-decoration: none; padding: 6px 10px; border: 1px solid #888; border-radius: 6px; }
+    </style>
+</head>
+<body>
+<a href="/ui/courses" class="button">← Назад к списку</a>
+
+<h1 th:text="${course.title}">Название курса</h1>
+<p class="muted" th:text="${course.description}">Описание</p>
+
+<h3>Модули</h3>
+<div th:if="${#lists.isEmpty(modules)}" class="muted">Пока нет модулей.</div>
+<ul>
+    <li th:each="m : ${modules}" th:text="${m.title}">Название модуля</li>
+</ul>
+
+</body>
+</html>

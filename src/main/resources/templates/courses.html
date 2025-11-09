@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Курсы</title>
+    <style>
+        body { font-family: sans-serif; margin: 24px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .card { border: 1px solid #ddd; padding: 16px; border-radius: 8px; }
+        .muted { color: #666; }
+        form .row { display: flex; gap: 8px; margin-bottom: 8px; }
+        input, textarea { width: 100%; padding: 6px; }
+        button { padding: 8px 12px; cursor: pointer; }
+        a.button { text-decoration: none; padding: 6px 10px; border: 1px solid #888; border-radius: 6px; }
+    </style>
+</head>
+<body>
+<h1>Список курсов</h1>
+
+<div class="grid">
+    <div>
+        <div th:if="${#lists.isEmpty(courses)}" class="muted">Курсов пока нет.</div>
+        <div th:each="c : ${courses}" class="card">
+            <h3 th:text="${c.title}">Название курса</h3>
+            <div class="muted" th:text="${c.description}">Описание</div>
+            <div style="margin-top: 8px;">
+                <a th:href="@{|/ui/courses/${c.id}|}" class="button">Подробнее</a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="card">
+            <h3>Создать курс</h3>
+            <form th:action="@{/ui/courses}" th:object="${createForm}" method="post">
+                <div class="row">
+                    <input th:field="*{title}" placeholder="Название курса" required/>
+                </div>
+                <div class="row">
+                    <textarea th:field="*{description}" placeholder="Описание"></textarea>
+                </div>
+                <div class="row">
+                    <input th:field="*{teacherId}" type="number" placeholder="ID преподавателя" required/>
+                </div>
+                <div class="row">
+                    <input th:field="*{categoryId}" type="number" placeholder="ID категории (необязательно)"/>
+                </div>
+                <div class="row">
+                    <input th:field="*{durationWeeks}" type="number" placeholder="Длительность (нед.)"/>
+                </div>
+                <button type="submit">Создать</button>
+            </form>
+            <p class="muted" style="margin-top:8px">
+                * Для POST-запроса требуется аутентификация TEACHER/ADMIN.
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
