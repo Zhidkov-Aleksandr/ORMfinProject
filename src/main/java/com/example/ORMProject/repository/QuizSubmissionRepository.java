@@ -1,0 +1,10 @@
+package com.example.ORMProject.repository;
+
+import com.example.ORMProject.model.QuizSubmission;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface QuizSubmissionRepository extends JpaRepository<QuizSubmission, Long> {
+    List<QuizSubmission> findByStudent_Id(Long studentId);
+    List<QuizSubmission> findByQuiz_Id(Long quizId);
+}
