@@ -67,10 +67,12 @@ public class AssignmentService {
         }
         Assignment a = assignmentRepository.findById(assignmentId)
                 .orElseThrow(() -> new EntityNotFoundException("Задание не найдено: id=" + assignmentId));
+
         if (newTitle != null) a.setTitle(newTitle);
         if (newDescription != null) a.setDescription(newDescription);
         if (newDueDate != null) a.setDueDate(newDueDate);
         if (newMaxScore != null) a.setMaxScore(newMaxScore);
+
         return assignmentRepository.save(a);
     }
 
