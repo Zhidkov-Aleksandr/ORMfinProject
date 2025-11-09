@@ -1,7 +1,7 @@
 package com.example.ORMProject.model;
 
 public enum Role {
-    STUDENT,
+    ADMIN,
     TEACHER,
-    ADMIN
+    STUDENT
 }

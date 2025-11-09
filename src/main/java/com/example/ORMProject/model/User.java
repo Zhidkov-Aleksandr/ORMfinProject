@@ -26,9 +26,97 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class User {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // автоинкремент для PostgreSQL
     private Long id;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public List<Course> getCoursesTaught() {
+        return coursesTaught;
+    }
+
+    public void setCoursesTaught(List<Course> coursesTaught) {
+        this.coursesTaught = coursesTaught;
+    }
+
+    public List<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(List<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
+
+    public List<Submission> getSubmissions() {
+        return submissions;
+    }
+
+    public void setSubmissions(List<Submission> submissions) {
+        this.submissions = submissions;
+    }
+
+    public List<QuizSubmission> getQuizSubmissions() {
+        return quizSubmissions;
+    }
+
+    public void setQuizSubmissions(List<QuizSubmission> quizSubmissions) {
+        this.quizSubmissions = quizSubmissions;
+    }
+
+    public List<CourseReview> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<CourseReview> reviews) {
+        this.reviews = reviews;
+    }
 
     @Column(nullable = false)
     private String name;
