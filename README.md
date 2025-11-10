@@ -327,9 +327,9 @@ Authorization: Basic [base64(username:password)]
 
 | Логин | Пароль | Роль | Описание |
 |-------|--------|------|---------|
-| `admin` | `admin` | ROLE_ADMIN | Администратор, полный доступ |
-| `manager` | `manager` | ROLE_MANAGER | Менеджер проектов |
-| `user` | `user` | ROLE_USER | Обычный пользователь |
+| `admin@example.com` | `admin123` | ROLE_ADMIN | Администратор, полный доступ |
+| `teacher@example.com` | `teach123` | ROLE_MANAGER | Менеджер проектов |
+| `student@example.com` | `stud123` | ROLE_USER | Обычный пользователь |
 
 ### Разграничение доступа
 
